@@ -83,8 +83,9 @@ class Board extends CI_Controller
 		// 	$start = ($page - 1) * $config['per_page'];
 		// }
 		
+		// ( 페이지 - 1 ) * 게시물 수
 		$start = ($page - 1) * $config['per_page'];
-		
+
 		// 게시물 수 변수에 담기
 		$limit = $config['per_page'];
 
@@ -95,13 +96,10 @@ class Board extends CI_Controller
 		$this->load->view('board/list_v', $data);
 	}
 
-	/**
-	 * url 중 키 값을 구분하여 값을 가져오도록
-	 *
-	 * @param Array $url : segment_explode 한 url 값
-	 * @param String $key :  가져오려는 값의 key
-	 * @return String $url[$k] : 리턴 값
-	 */
+	// url 중 키 값을 구분하여 값을 가져오도록
+	// @param Array $url : segment_explode 한 url 값
+	// @param String $key :  가져오려는 값의 key
+	// @return String $url[$k] : 리턴 값
 	function url_explode($url, $key) {
 		$cnt = count($url);
  
@@ -113,12 +111,9 @@ class Board extends CI_Controller
 		}
 	}
  
-	/**
-	 * HTTP의 URL을 "/"를 Delimiter로 사용하여 배열로 바꿔 리턴
-	 *
-	 * @param String 대상이 되는 문자열
-	 * @return string[]
-	 */
+	// HTTP의 URL을 "/"를 Delimiter로 사용하여 배열로 바꿔 리턴
+	// @param String 대상이 되는 문자열
+	// @return string[]
 	function segment_explode($seg) {
 		// 세그먼트 앞 뒤 "/" 제거 후 uri를 배열로 반환
 		// $seg = board/lists/ci_board
@@ -148,9 +143,16 @@ class Board extends CI_Controller
 
 	// 게시물 쓰기
 	function write() {		
+		// system/language/english/form_validation_lang.php
+		$this->load->library('form_validation');
+
+		// 폼 검증할 필드와 규칙 사전 정의
+		$this->form_validation->set_rules('subject', '제목', 'required');
+        $this->form_validation->set_rules('contents', '내용', 'required');
+
 		// 글쓰기 POST 전송 시 
-		if ( $_POST ) {
- 
+		if ( $this->form_validation->run() == TRUE) {
+			
 			// 주소 중에서 page 세그먼트가 있는지 검사하기 위해 주소를 배열로 반환
 			$uri_array = $this->segment_explode($this->uri->uri_string());
 
