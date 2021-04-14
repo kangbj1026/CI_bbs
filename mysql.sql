@@ -19,15 +19,15 @@ CREATE TABLE board (
 	COLLATE='utf8_general_ci'
 	ENGINE=MyISAM;
 
-INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('advisor', 'Palpit', 'First Note', 'Test', 0, '2015-08-11 11:11:21');
-INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('advisor', 'Palpit', 'Second Note', 'Test', 0, '2015-08-11 11:11:21');
-INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('advisor', 'Palpit', 'Third Note', 'Test', 0, '2015-08-11 11:11:21');
-INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('advisor', 'Palpit', 'Fourth Note', 'Test', 0, '2015-08-11 11:11:21');
-INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('advisor', 'Palpit', 'Fifth Note', 'Test', 0, '2015-08-11 11:11:21');
-INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('advisor', 'Palpit', 'Sixth Note', 'Test', 0, '2015-08-11 11:11:21');
-INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('advisor', 'Palpit', 'Seventh Note', 'Test', 0, '2015-08-11 11:11:21');
-INSERT INTO ci_board(board_pid, user_id, user_name, subject, contents, hits, reg_date) VALUES (1, 'zhfldi4', 'Cyzone', 'Comment Test', 'Comment', 0, '2015-08-12 23:11:11');
-INSERT INTO ci_board(board_pid, user_id, user_name, subject, contents, hits, reg_date) VALUES (1, 'zhfldi4', 'Cyzone', 'Comment Test2', 'Comment', 0, '2015-08-12 23:11:11');
+INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('rabbit', 'RaB', 'First Note', 'Test', 0, '2021-03-11 11:11:21');
+INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('rabbit', 'RaB', 'Second Note', 'Test', 0, '2021-03-11 11:11:21');
+INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('rabbit', 'RaB', 'Third Note', 'Test', 0, '2021-03-11 11:11:21');
+INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('rabbit', 'RaB', 'Fourth Note', 'Test', 0, '2021-03-11 11:11:21');
+INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('rabbit', 'RaB', 'Fifth Note', 'Test', 0, '2021-03-11 11:11:21');
+INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('rabbit', 'RaB', 'Sixth Note', 'Test', 0, '2021-03-11 11:11:21');
+INSERT INTO ci_board(user_id, user_name, subject, contents, hits, reg_date) VALUES ('rabbit', 'RaB', 'Seventh Note', 'Test', 0, '2021-03-11 11:11:21');
+INSERT INTO ci_board(board_pid, user_id, user_name, subject, contents, hits, reg_date) VALUES (1, 'up_rabbit', 'up_RaB', 'Comment Test', 'Comment', 0, '2021-03-12 23:11:11');
+INSERT INTO ci_board(board_pid, user_id, user_name, subject, contents, hits, reg_date) VALUES (1, 'up_rabbit', 'up_RaB', 'Comment Test2', 'Comment', 0, '2021-03-12 23:11:11');
 
 CREATE TABLE users (
 	id INT(10) NULL AUTO_INCREMENT PRIMARY KEY,
@@ -42,4 +42,4 @@ CREATE TABLE users (
 	ENGINE = MyISAM
 	ROW_FORMAT = DEFAULT;
 
-INSERT INTO users(username, password, name, email, reg_date) VALUES ('advisor', '1234', 'palpit', 'zhfldi4@gmail.com', '2015-08-24 13:11:21');
+INSERT INTO users(username, password, name, email, reg_date) VALUES ('rabbit', '1234', 'RaB', 'kangbj725893@naver.com', '2021-03-24 13:11:21');
