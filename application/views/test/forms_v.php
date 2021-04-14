@@ -32,7 +32,7 @@
 								echo "아이디를 입력해주세요.";
 							} else {
 								echo $error_username;
-							} 
+							}
 						?>
 					</p>
 				</div>
@@ -126,4 +126,4 @@
 
 		<div><input type="submit" value="전송" class="btn btn-primary" /></div>
 	</form>
-</article>
+</article> 

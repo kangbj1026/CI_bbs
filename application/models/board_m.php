@@ -108,4 +108,4 @@ class Board_m extends CI_Model
 		
 		return $result;
 	}
-}
+} 

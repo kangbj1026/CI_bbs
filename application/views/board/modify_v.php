@@ -17,6 +17,6 @@
 				<input class="btn" type="button" onclick="window.history.back()" value="취소">
 			</div>
 			</div>
-		</fieldset>
+		</fieldset> 
 	</form>
 </article>

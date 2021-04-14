@@ -42,4 +42,4 @@
 	<div class="pagination">
 	<?=$pagination?>
 	</div>
-</article>
+</article> 

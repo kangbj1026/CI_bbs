@@ -250,4 +250,4 @@ class Board extends CI_Controller
 		}
 		
 	}
-}
+} 

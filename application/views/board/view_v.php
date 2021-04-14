@@ -29,4 +29,4 @@
 			</tr>
 		</tfoot>
 	</table>
-</article>
+</article> 

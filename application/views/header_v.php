@@ -63,4 +63,4 @@
 			<div class="top_right">
 				<!-- <h2><a rel="external" href="/bbs/<?=$this->uri->segment(1);?>/lists/<?=$this->uri->segment(3);?>"> Login </a></h2>			 -->
 			</div>
-		</header>
+		</header> 
