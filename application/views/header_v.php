@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,4 +62,4 @@
 			<div class="top_right">
 				<!-- <h2><a rel="external" href="/bbs/<?=$this->uri->segment(1);?>/lists/<?=$this->uri->segment(3);?>"> Login </a></h2>			 -->
 			</div>
-		</header> 
+		</header>

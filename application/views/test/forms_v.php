@@ -21,7 +21,7 @@
 				<label class="control-label" for="input01">아이디</label>
 				<div class="controls">
 					<!--
-					set_value()
+					set_value() 
 					input 이나 textarea의 폼 데이터 복원에 사용
 					첫 번째 파라미터로 필드 이름을 넘겨줌, 두 번째 파라미터에 값을 입력할 경우 폼이 처음 로드될 때 기본 값으로 사용
 					-->
@@ -126,4 +126,4 @@
 
 		<div><input type="submit" value="전송" class="btn btn-primary" /></div>
 	</form>
-</article> 
+</article>

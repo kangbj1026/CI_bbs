@@ -1,7 +1,4 @@
 <article id="board_area">
-	<header>
-		<h1></h1>
-	</header>
 	<table cellspacing="0" cellpadding="0" class="table">
 		<thead>
 			<tr>
@@ -29,4 +26,4 @@
 			</tr>
 		</tfoot>
 	</table>
-</article> 
+</article>

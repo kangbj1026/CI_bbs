@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-// 테스트용 컨트롤러
+// 테스트용 컨트롤러 
 class Test extends CI_Controller {
  
 	function __construct() {
@@ -76,4 +76,4 @@ class Test extends CI_Controller {
 		}
 	}
 }
-?> 
+?>

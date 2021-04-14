@@ -1,4 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+// 모델 데이터베이스 연결 통로
 class Board_m extends CI_Model 
 {
 	function __construct() 
@@ -108,4 +109,4 @@ class Board_m extends CI_Model
 		
 		return $result;
 	}
-} 
+}
