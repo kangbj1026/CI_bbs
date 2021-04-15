@@ -66,8 +66,8 @@ class Board_m extends CI_Model
 	function insert_board($arrays) {
 		$insert_array = array(
 			'board_pid' => 0,
-			'user_id' => 'advisor',
-			'user_name' => 'palpit',
+			'user_id' => 'rabbit',
+			'user_name' => 'RaB',
 			'subject' => $arrays['subject'],
 			'contents' => $arrays['contents'],
 			'reg_date' => date("Y-m-d H:i:s")

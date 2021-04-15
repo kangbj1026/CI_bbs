@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -9,8 +10,8 @@
 	<!--[if lt IE 9]>
 	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<link rel="stylesheet" href="<?=base_url("bbs/include/css/style.css")?>">
-	<script type="text/javascript" src="<?=base_url("bbs/include/js/jquery-3.6.0.min.js")?>"></script>
+	<link rel="stylesheet" href="<?= base_url("bbs/include/css/style.css") ?>">
+	<script type="text/javascript" src="<?= base_url("bbs/include/js/jquery-3.6.0.min.js") ?>"></script>
 	<script>
 		$(document).ready(function() {
 			$("#search_btn").click(function() {
@@ -26,6 +27,7 @@
 				}
 			});
 		});
+
 		function board_search_enter(form) {
 			// window.event.keyCode - 자바 스크립트 이벤트 키 코드
 			let keycode = window.event.keyCode;
@@ -56,10 +58,16 @@
 		<header id="header">
 			<div class="top">
 				<ul>
-					<h1><a rel="external" href="/bbs/<?=$this->uri->segment(1);?>/lists/<?=$this->uri->segment(3);?>"> board 게시판 </a></h1>
+					<h1><a rel="external" href="/bbs/board/lists/board/"> board 게시판 </a></h1>
 				</ul>
 			</div>
 			<div class="top_right">
-				<!-- <h2><a rel="external" href="/bbs/<?=$this->uri->segment(1);?>/lists/<?=$this->uri->segment(3);?>"> Login </a></h2>			 -->
+				<?php
+				if (@$this->session->userdata('logged_in') == TRUE) {
+					echo "<h3><p>" . $this->session->userdata('username') . " 님</p></h3> <h2><a href='/bbs/auth/logout'> LOG OUT </a></h2>";
+				} else {
+					echo "<h2><a href='/bbs/auth/login'> LOGIN </a></h2>";
+				}
+				?>
 			</div>
 		</header>

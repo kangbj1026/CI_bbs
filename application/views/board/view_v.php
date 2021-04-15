@@ -3,7 +3,7 @@
 		<thead>
 			<tr>
 				<th scope="col"><?=$views->subject?></th>
-				<th scope="col">이름: <?=$views->user_name?></th>
+				<th scope="col">아이디: <?=$views->user_id?></th>
 				<th scope="col">조회수: <?=$views->hits?></th>
 				<th scope="col">등록일: <?=$views->reg_date?></th>
 			</tr>

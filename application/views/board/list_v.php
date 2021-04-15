@@ -15,12 +15,12 @@
 			?>
 				<tr>
 					<td class="board_id"><?=$lt->board_id?> </td>
-					<td colspan="1"><a rel="external" href="/bbs/<?=$this->uri->segment(1)?>/view/<?=$this->uri->segment(3)?>/<?=$lt->board_id?>"> <?=$lt->subject?></a></td>
-					<td colspan="1"><?=$lt->user_name?></td>
+					<td colspan="1"><a rel="external" href="/bbs/<?=$this->uri->segment(1)?>/view/<?=$this->uri->segment(3)?>/<?=$lt->board_id?>"><?=$lt->subject?></a></td>
+					<td colspan="1"><?=$lt->user_id?></td>
 					<td colspan="1"><?=$lt->hits?></td>
 					<td colspan="1">
-						<time datetime="<?=mdate("%Y-%M-%j", human_to_unix($lt->reg_date))?>">
-							<?=mdate("%Y-%M-%j", human_to_unix($lt->reg_date))?>
+						<time datetime="<?=mdate("%Y-%m-%j", human_to_unix($lt->reg_date))?>">
+							<?=mdate("%Y-%m-%j", human_to_unix($lt->reg_date))?>
 						</time>
 					</td>
 				</tr>
