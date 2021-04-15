@@ -9,7 +9,8 @@ class Board extends CI_Controller
 		$this->load->database(); // 데이터베이스 수동 연결
 		$this->load->model('board_m'); // 모델은 일반적으로 컨트롤러(controller) 내에서 로드되어 호출
 		$this->load->helper(array('url', 'date')); // 핼퍼에 정의되어 있는 함수를 사용
-		$this->load->helper('alert');
+		$this->load->helper('alert'); // 경고창
+		$this->load->helper('form');
 	}
 	
 	public function index() // 가장 기본 적으로 페이지를 열어주는 함수
@@ -148,7 +149,7 @@ class Board extends CI_Controller
 
 		// 폼 검증할 필드와 규칙 사전 정의
 		$this->form_validation->set_rules('subject', '제목', 'required');
-        $this->form_validation->set_rules('contents', '내용', 'required');
+		$this->form_validation->set_rules('contents', '내용', 'required');
 
 		// 글쓰기 POST 전송 시 
 		if ( $this->form_validation->run() == TRUE) {
@@ -195,8 +196,14 @@ class Board extends CI_Controller
 
 	// 게시글 수정
 	function modify() {
-		// 글수정 POST 수정 전송 시
-		if ( $_POST ) {
+		// system/language/english/form_validation_lang.php
+		$this->load->library('form_validation');
+
+		// 폼 검증할 필드와 규칙 사전 정의
+		$this->form_validation->set_rules('subject', '제목', 'required');
+		$this->form_validation->set_rules('contents', '내용', 'required');
+		
+		if ( $this->form_validation->run() == TRUE ) {
 			$uri_array = $this->segment_explode($this->uri->uri_string());
 			
 			if ( in_array('/page/', $uri_array)) {

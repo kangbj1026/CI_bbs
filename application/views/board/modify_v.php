@@ -1,10 +1,15 @@
 <article id="board_area">
-	<form class="form-horizontal" method="post" action="" id="write_action">
+	<!-- <form class="form-horizontal" method="post" action="" id="write_action"> -->
+		<?php
+		$attributes = array('class' => 'form-horizontal', 'id' => 'write_action');
+		echo form_open('bbs/board/modify/board/board_id/'.$this->uri->segment(5).'/page', $attributes);
+		?>
 		<fieldset>
 			<legend>
 				게시물 수정
 			</legend>
 			<div class="control-group">
+			<h6><?=validation_errors()?></h6>
 				<label class="control-label" for="input01"> 제목 : </label> <br>
 				<input type="text" class="input-xlarge" id="input01" name="subject" value="<?=$views->subject?>" /><br>
 				<label class="control-label" for="input02"> 내용 : </label> <br>

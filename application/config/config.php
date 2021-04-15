@@ -431,8 +431,10 @@ $config['standardize_newlines'] = FALSE;
 | WARNING: This feature is DEPRECATED and currently available only
 |          for backwards compatibility purposes!
 |
-*/
-$config['global_xss_filtering'] = FALSE;
+| XSS는 cross-Site Scripting의 약어로 사이트간 스크립팅 또는 크로스 사이트 스크립팅
+| 두 번째 파라미터 없이 $this->input->post('변수명')으로만 사용해도 자동으로 보안 처리
+*/ 
+$config['global_xss_filtering'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -447,8 +449,11 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_expire' = The number in seconds the token should expire.
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
+| $config['csrf_protection'] = TRUE;
+| 폼 전송 부분의 <form> 선언 부분을 form helper의 form_open() 함수로 바꿔주면 CSRF 방지를 위한 hidden 필드를 자동으로 삽입
+| 컨트롤러에서의 체크 부분은 코어에서 자동으로 처리
 */
-$config['csrf_protection'] = FALSE;
+$config['csrf_protection'] = TRUE;
 $config['csrf_token_name'] = 'csrf_test_name';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
