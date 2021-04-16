@@ -11,6 +11,7 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
+		$this->load->library('session');
 		$this->login();
 	}
 
@@ -29,7 +30,6 @@ class Auth extends CI_Controller
 	public function login()
 	{
 		$this->load->library('form_validation');
-
 		$this->load->helper('alert');
 
 		$this->form_validation->set_rules('username', '아이디', 'required|alpha_numeric');

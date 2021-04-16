@@ -63,7 +63,7 @@
 			</div>
 			<div class="top_right">
 				<?php
-				if (@$this->session->userdata('logged_in') == TRUE) {
+				if ($this->session->userdata('logged_in') == TRUE) {
 					echo "<h3><p>" . $this->session->userdata('username') . " 님</p></h3> <h2><a href='/bbs/auth/logout'> LOG OUT </a></h2>";
 				} else {
 					echo "<h2><a href='/bbs/auth/login'> LOGIN </a></h2>";
