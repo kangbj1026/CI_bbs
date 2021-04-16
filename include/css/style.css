@@ -26,9 +26,13 @@ div .pre{
 	float: left;
 }
 #header .top_right {
-	width: 10%;
+	width: 15%;
 	padding: 5px;
 	float: right;
+}
+#header .top_right .a {
+	padding: 0 20px 0 0;
+	float: inherit;
 }
 
 .title {

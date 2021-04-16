@@ -13,6 +13,19 @@ class Board_m extends CI_Model
 		$query = $this->db->query($sql2);
 	}
 
+    // 게시물 작성자 아이디 반환
+    // @return string 작성자 아이디
+    function writer_check() {
+        $table = $this->uri->segment(3);
+        $board_id = $this->uri->segment(5);
+        
+        $sql = "SELECT user_id FROM $table WHERE board_id = $board_id ";
+        $query = $this->db->query($sql);
+        
+        return $query->row();
+        
+    }
+
 	// 게시판 목록
 	function get_list($table = 'board', $type = '', $offset = '', $limit = '', $search_word = '') {
 		$sword = '';
@@ -66,7 +79,7 @@ class Board_m extends CI_Model
 	function insert_board($arrays) {
 		$insert_array = array(
 			'board_pid' => 0,
-			'user_id' => 'rabbit',
+			'user_id' => $arrays['user_id'],
 			'user_name' => 'RaB',
 			'subject' => $arrays['subject'],
 			'contents' => $arrays['contents'],
@@ -106,7 +119,7 @@ class Board_m extends CI_Model
 		);
 		
 		$result = $this->db->delete($table, $delete_array);
-		
+
 		return $result;
 	}
 }

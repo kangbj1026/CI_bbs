@@ -26,6 +26,10 @@ class Auth extends CI_Controller
 		$this->load->view('footer_v');
 	}
 
+	public function join(){
+		$this->load->view('auth/join_v');
+	}
+
 	// 로그인 처리
 	public function login()
 	{
