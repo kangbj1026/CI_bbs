@@ -100,7 +100,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -377,24 +377,24 @@ $config['encryption_key'] = 'bbs_system';
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-// $config['sess_driver'] = 'database'; 
+$config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'session';
-$config['sess_expiration'] = 7200;
-$config['sess_expire_on_close'] = false;
-$config['sess_encrypt_cookie'] = false;
+$config['sess_expiration'] = 3600;
+$config['sess_expire_on_close'] = true;
+$config['sess_encrypt_cookie'] = true;
 // $config['sess_save_path'] = 'sessions';
-$config['sess_match_ip'] = FALSE;
-// $config['sess_use_database'] = true;
+$config['sess_match_ip'] = true;
+$config['sess_use_database'] = true;
 $config['sess_time_to_update'] = 300;
-$config['sess_regenerate_destroy'] = false;
+$config['sess_regenerate_destroy'] = true;
 $config['sess_table_name'] = 'sessions';
 $config['sess_match_useragent'] = TRUE;
 
-// $config['sess_cookie_name']        = 'ci_session';
+// $config['sess_cookie_name']        = 'session';
 // $config['sess_expiration']        = 7200;
 // $config['sess_expire_on_close']    = FALSE;
 // $config['sess_encrypt_cookie']    = FALSE;
-// $config['sess_use_database']    = FALSE;
+// $config['sess_use_database']    = true;
 // $config['sess_table_name']        = 'sessions';
 // $config['sess_match_ip']        = FALSE;
 // $config['sess_match_useragent']    = TRUE;

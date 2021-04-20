@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -10,9 +9,10 @@
 	<!--[if lt IE 9]>
 	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<link rel="stylesheet" href="<?= base_url("bbs/include/css/style.css") ?>">
-	<script type="text/javascript" src="<?= base_url("bbs/include/js/jquery-3.6.0.min.js") ?>"></script>
+	<link rel="stylesheet" href="<?=base_url("bbs/include/css/style.css")?>">
+	<script type="text/javascript" src="<?=base_url("bbs/include/js/jquery-3.6.0.min.js")?>"></script>
 	<script>
+	// 검색어 입력시 조건
 		$(document).ready(function() {
 			$("#search_btn").click(function() {
 				if ($("#q").val() == '') {
@@ -35,21 +35,22 @@
 				$("#search_btn").click();
 		}
 
-		// $(document).ready(function() {
-		// 	$("#write_btn").click(function() {
-		// 		if ($("#input01").val() == '') {
-		// 			alert('제목을 입력해 주세요.');
-		// 			$("#input01").focus();
-		// 			return false;
-		// 		} else if ($("#input02").val() == '') {
-		// 			alert('내용을 입력해 주세요.');
-		// 			$("#input02").focus();
-		// 			return false;
-		// 		} else {
-		// 			$("#write_action").submit();
-		// 		}
-		// 	});
-		// });
+// 쓰기 페이지에서 확인 버튼을 눌렀을때 조건
+//	$(document).ready(function() {
+//	 	$("#write_btn").click(function() {
+// 			if ($("#input01").val() == '') {
+// 				alert('제목을 입력해 주세요.');
+// 				$("#input01").focus();
+// 				return false;
+// 			} else if ($("#input02").val() == '') {
+// 				alert('내용을 입력해 주세요.');
+// 				$("#input02").focus();
+// 				return false;
+// 			} else {
+// 				$("#write_action").submit();
+// 			}
+// 		});
+// 	});
 	</script>
 </head>
 

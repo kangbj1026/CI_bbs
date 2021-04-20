@@ -8,7 +8,7 @@ class Board_m extends CI_Model
 		$sql = "ALTER TABLE board AUTO_INCREMENT=1";
 		$query = $this->db->query($sql);
 		$sql1 = "SET @COUNT = 0";
-		$query = $this->db->query($sql1);
+		$query = $this->db->query($sql1);	 
 		$sql2 = "UPDATE board SET board_id = @COUNT:=@COUNT+1";
 		$query = $this->db->query($sql2);
 	}
@@ -19,7 +19,7 @@ class Board_m extends CI_Model
         $table = $this->uri->segment(3);
         $board_id = $this->uri->segment(5);
         
-        $sql = "SELECT user_id FROM $table WHERE board_id = $board_id ";
+        $sql = "SELECT user_id FROM $table WHERE board_id = '$board_id'";
         $query = $this->db->query($sql);
         
         return $query->row();
@@ -117,7 +117,6 @@ class Board_m extends CI_Model
 		$delete_array = array(
 			'board_id' => $no
 		);
-		
 		$result = $this->db->delete($table, $delete_array);
 
 		return $result;

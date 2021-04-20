@@ -7,11 +7,13 @@ class Auth extends CI_Controller
 		parent::__construct();
 		$this->load->model('auth_m');
 		$this->load->helper('form');
+		$this->load->library('session');
+		$this->load->library('form_validation');
+		$this->load->helper('alert');
 	}
 
 	public function index()
 	{
-		$this->load->library('session');
 		$this->login();
 	}
 
@@ -33,13 +35,8 @@ class Auth extends CI_Controller
 	// 로그인 처리
 	public function login()
 	{
-		$this->load->library('form_validation');
-		$this->load->helper('alert');
-
 		$this->form_validation->set_rules('username', '아이디', 'required|alpha_numeric');
 		$this->form_validation->set_rules('password', '비밀번호', 'required');
-
-		// echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 
 		if ($this->form_validation->run() == TRUE) {
 			$auth_data = array(
@@ -61,7 +58,7 @@ class Auth extends CI_Controller
 				alert('로그인 되었습니다.', '/bbs/board/lists/board/page/1');
 				exit;
 			} else {
-				alert('아이디나 비밀번호를 확인해 주세요.', '/bbs/auth/login');
+				alert('아이디나 비밀번호를 확인해 주세요. ', '/bbs/auth/login');
 				exit;
 			}
 		} else {
@@ -70,13 +67,13 @@ class Auth extends CI_Controller
 	}
 
 	public function logout()
-	{
-		$this->load->helper('alert');
-
+	{	
+		// sessions table delete column data - username, email, logged_in ;
 		$this->session->sess_destroy();
+		// delete from sessions where session_id;
+		$this->session->unset_userdata('username');
 
-		// echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
-		alert('로그아웃 되었습니다.', '/bbs/board/lists/board/page/1');
+		alert('로그아웃 되었습니다.', '/bbs/board/lists/board');
 		exit;
 	}
 }

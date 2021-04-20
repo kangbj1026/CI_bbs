@@ -55,7 +55,7 @@ class CI_Pagination {
 	 *
 	 * @var	string
 	 */
-	protected $base_url		= '';
+	protected $base_url	= '';
 
 	/**
 	 * Prefix
@@ -84,17 +84,17 @@ class CI_Pagination {
 	 * Relates to "digit" type links shown before/after
 	 * the currently viewed page.
 	 *
+
 	 * @var	int
 	 */
-	protected $num_links = 4;
+	protected $num_links = 2;
 
 	/**
 	 * Items per page
 	 *
 	 * @var	int
 	 */
-	public $per_page = 1;
-
+	public $per_page = 0;
 	/**
 	 * Current page
 	 *
@@ -117,7 +117,7 @@ class CI_Pagination {
 	 * @var	string
 	 */
 	// protected $first_link = '&lsaquo; First';
-	protected $first_link = '';
+	protected $first_link = '&lsaquo; First';
 
 	/**
 	 * Next link
@@ -125,7 +125,7 @@ class CI_Pagination {
 	 * @var	string
 	 */
 	// protected $next_link = '&gt;';
-	protected $next_link = '';
+	protected $next_link = '&gt;';
 
 	/**
 	 * Previous link
@@ -133,7 +133,7 @@ class CI_Pagination {
 	 * @var	string
 	 */
 	// protected $prev_link = '&lt;';
-	protected $prev_link = '';
+	protected $prev_link = '&lt;';
 
 	/**
 	 * Last link
@@ -261,7 +261,7 @@ class CI_Pagination {
 	 *
 	 * @var	bool
 	 */
-	protected $page_query_string = FALSE;
+	protected $page_query_string = false;
 
 	/**
 	 * Query string segment
@@ -299,7 +299,7 @@ class CI_Pagination {
 	 *
 	 * @var	bool
 	 */
-	protected $reuse_query_string = FALSE;
+	protected $reuse_query_string = false;
 
 	/**
 	 * Use global URL suffix flag
@@ -334,8 +334,8 @@ class CI_Pagination {
 	{
 		$this->CI =& get_instance();
 		$this->CI->load->language('pagination');
-		// 'next_link', 'prev_link'
-		foreach (array('first_link', 'last_link') as $key)
+		// 'first_link','next_link', 'prev_link', 'last_link'
+		foreach (array() as $key)
 		{
 			if (($val = $this->CI->lang->line('pagination_'.$key)) !== FALSE)
 			{

@@ -1,7 +1,7 @@
+<?php $attributes = array('class' => 'form-horizontal', 'id' => 'write_action');?>
 <article id="board_area">
 	<!-- <form class="form-horizontal" method="post" action="" id="write_action"> -->
 	<?php
-	$attributes = array('class' => 'form-horizontal', 'id' => 'write_action');
 	echo form_open('bbs/board/write/board', $attributes);
 	?>
 	<fieldset>
@@ -23,7 +23,7 @@
 			</div>
 			<div class="form-actions">
 				<button type="submit" class="btn" id="write_btn"> 작성 </button>
-				<input class="btn" type="button" onclick="document.location.reload()" value="새로고침">
+				<input class="btn" type="button" onclick="document.location.reload();" value="새로고침">
 				<input class="btn" type="button" onclick="window.history.back()" value="취소">
 			</div>
 		</div>

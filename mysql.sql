@@ -44,11 +44,11 @@ CREATE TABLE users (
 
 INSERT INTO users(username, password, name, email, reg_date) VALUES ('rabbit', '1234', 'RaB', 'kangbj725893@naver.com', '2021-03-24 13:11:21');
 
-CREATE TABLE sessions (
+CREATE TABLE IF NOT EXISTS sessions (
 	session_id varchar(40) DEFAULT 0 NOT NULL PRIMARY KEY,
 	ip_address varchar(40) DEFAULT 0 NOT NULL,
-	user_agent varchar(120) NOT NULL,
 	last_activity int(10) unsigned DEFAULT 0 NOT NULL,
-	user_data text NOT NULL,
+	data text NOT NULL,
+	timestamp TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
 	KEY last_activity_idx (last_activity)
 );
