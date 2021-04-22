@@ -368,7 +368,7 @@ class CI_DB_mysql_driver extends CI_DB {
 	 */
 	public function insert_id()
 	{
-		return mysql_insert_id($this->conn_id);
+		return mysqli_insert_id($this->conn_id);
 	}
 
 	// --------------------------------------------------------------------

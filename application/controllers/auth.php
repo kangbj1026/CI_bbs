@@ -41,7 +41,7 @@ class Auth extends CI_Controller
 		if ($this->form_validation->run() == TRUE) {
 			$auth_data = array(
 				'username' => $this->input->post('username', TRUE),
-				'password' => $this->input->post('password', TRUE)
+				'password' => $this->input->post('password', TRUE),
 			);
 
 			$result = $this->auth_m->login($auth_data);
@@ -49,10 +49,10 @@ class Auth extends CI_Controller
 			if ($result) {
 				$newdata = array(
 					'username' => $result->username,
+					'name' => $result->name,
 					'email' => $result->email,
 					'logged_in' => TRUE
 				);
-
 				$this->session->set_userdata($newdata);
 
 				alert('로그인 되었습니다.', '/bbs/board/lists/board/page/1');

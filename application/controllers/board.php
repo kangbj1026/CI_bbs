@@ -50,9 +50,9 @@ class Board extends CI_Controller
 		// $uri_array[0] = board, $uri_array[1] = lists, $uri_array[2] = ci_board, $uri_array[3] = page
 
 		// 값이 배열에 존재하는지 확인
-		if (in_array('q', $uri_array)) {
+		if (in_array('/q/', $uri_array)) {
 			// 주소에 검색어가 있을 경우 처리 , 검색어를 반환
-			$search_word = urldecode($this->url_explode($uri_array, 'q'));
+			$search_word = urldecode($this->url_explode($uri_array, '/q/'));
 			// 페이지네이션 용 주소
 			$page_url = '/q/' . $search_word;
 			// alert($page_url);
@@ -136,11 +136,17 @@ class Board extends CI_Controller
 
 	// 게시물 보기
 	function view() {
-			// 게시판 이름과 게시물 번호에 해당하는 게시물 가져오기
-			$data['views'] = $this->board_m->get_view($this->uri->segment(3), $this->uri->segment(4));
-	 
-			// view 호출
-			$this->load->view('board/view_v', $data);
+		$table = $this->uri->segment(3);
+		$board_id = $this->uri->segment(5);
+
+		// 게시판 이름과 게시물 번호에 해당하는 게시물 가져오기
+		$data['views'] = $this->board_m->get_view($this->uri->segment(3), $this->uri->segment(4));
+
+		// 게시판 이름과 세미루 번호에 해당하는 댓글 리스트 가져오기
+		$data['comment_list'] = $this->board_m->get_comment($table, $board_id);
+	
+		// view 호출
+		$this->load->view('board/view_v', $data);
 	}
 
 	// 게시물 쓰기
@@ -172,8 +178,10 @@ class Board extends CI_Controller
 				'subject' => $this->input->post('subject', TRUE),
 				'contents' => $this->input->post('contents', TRUE),
 				'table' => $this->uri->segment(3),
-				'user_id' => $this->session->userdata('username')
+				'user_id' => $this->session->userdata('username'),
+				'user_name' => $this->session->userdata('name')
 			);
+			print_r($this->session->userdata());
 
 			// 모델로 저장된 부분 보냄
 			$result = $this->board_m->insert_board($write_data);
@@ -219,7 +227,7 @@ class Board extends CI_Controller
 			$result = $this->board_m->modify_board($modify_data);
 
 			if ($result) {
-				alert('수정되었습니다.', '/bbs/board/lists/' . $this->uri->segment(3));
+				alert('수정되었습니다.', '/bbs/board/view/' . $this->uri->segment(3) . '/' . $this->uri->segment(5));
 				exit;
 			} else {
 				alert('다시 수정해 주세요.', '/bbs/board/modify/' . $this->uri->segment(3) . '/board_id/' . $this->uri->segment(5) . '/page/' . $pages);

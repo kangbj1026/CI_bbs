@@ -80,7 +80,7 @@ class Board_m extends CI_Model
 		$insert_array = array(
 			'board_pid' => 0,
 			'user_id' => $arrays['user_id'],
-			'user_name' => 'RaB',
+			'user_name' => $arrays['user_name'],
 			'subject' => $arrays['subject'],
 			'contents' => $arrays['contents'],
 			'reg_date' => date("Y-m-d H:i:s")
@@ -121,4 +121,37 @@ class Board_m extends CI_Model
 
 		return $result;
 	}
+
+    // 댓글 입력
+    // @param array $arrays 테이블 명, 게시물 제목, 게시물 내용, 아이디 
+    // @return boolean 성공 여부
+    function insert_comment($arrays) {
+        $insert_array = array( 
+            'board_pid' => $arrays['board_pid'],
+            'user_id' => $arrays['user_id'],
+            'user_name' => $this->session->userdata('name'),
+            'subject' => $arrays['subject'],
+            'contents' => $arrays['contents'],
+            'reg_date' => date('Y-m-d H:i:s')
+        );
+        
+        $this->db->insert($arrays['table'], $insert_array);
+        
+        $board_id = $this->db->insert_id();
+        
+        return $board_id;
+    }
+    
+    // 댓글 리스트 가져오기
+    // @param string $table 테이블 
+    // @param string $id 게시물 번호
+    // @return array
+    function get_comment($table, $id) {
+        $sql = "SELECT * FROM $table WHERE board_pid = '$id' ORDER BY board_id DESC";
+        $query = $this->db->query($sql);
+        
+        $result = $query->result();
+        
+        return $result;
+    }
 }

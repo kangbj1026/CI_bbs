@@ -33,7 +33,7 @@
 				<a href="/bbs/board/write/<?=$this->uri->segment(3);?>" class="btn" > 쓰기 </a>
 				<form id="bd_search" method="post">
 					<input type="text" name="search_word" id="q" onkeypress="board_search_enter(document.q);" />
-					<input type="button" value="검색" id="search_btn" />
+					<button type="button" id="search_btn"> 검색 </button>
 				</form>
 			</th>
 		</tfoot>
