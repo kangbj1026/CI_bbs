@@ -13,8 +13,6 @@ class Board extends CI_Controller
 		$this->load->helper(array('url', 'date')); // 핼퍼에 정의되어 있는 함수를 사용
 		$this->load->helper('alert'); // 경고창
 		$this->load->helper('form');
-		
-
 	}
 	
 	public function index() // 가장 기본 적으로 페이지를 열어주는 함수
@@ -82,11 +80,11 @@ class Board extends CI_Controller
 		if ($page < 0) {
 			$start = (($page / $config['per_page'])) * $config['per_page'];
 		} else {
-			$start = ($page - 1) * $config['per_page'];
+			$start = ((int)$page - 1) * $config['per_page'];
 		}
 		
 		// ( 페이지 - 1 ) * 게시물 수
-		$start = ($page - 1) * $config['per_page'];
+		$start = ((int)$page - 1) * $config['per_page'];
 
 		// 게시물 수 변수에 담기
 		$limit = $config['per_page'];
@@ -164,7 +162,7 @@ class Board extends CI_Controller
 		$this->form_validation->set_rules('subject', '제목', 'required');
 		$this->form_validation->set_rules('contents', '내용', 'required');
 
-		// 글쓰기 POST 전송 시 
+		// 글쓰기 POST 전송 시
 		if ($this->form_validation->run() == TRUE) {
 
 			// if (!$this->input->post('subject', TRUE) || !$this->input->post('contents', TRUE)) {

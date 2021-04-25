@@ -4,6 +4,12 @@ class Auth_m extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
+		$sql = "ALTER TABLE users AUTO_INCREMENT=1";
+		$query = $this->db->query($sql);
+		$sql1 = "SET @COUNT = 0";
+		$query = $this->db->query($sql1);	 
+		$sql2 = "UPDATE users SET id = @COUNT:=@COUNT+1";
+		$query = $this->db->query($sql2);
 	}
 
 	// 아이디 비밀번호 체크
@@ -19,6 +25,20 @@ class Auth_m extends CI_Model
 		} else {
 			return FALSE;
 		}
+	}
+
+	// 회원가입
+	function insert_join($arrays){
+		$insert_array = array(
+			'username' => $arrays['id'],
+			'password' => $arrays['password'],
+			'name' => $arrays['name'],
+			'email' => $arrays['email'],
+			'reg_date' => date("Y-m-d H:i:s")
+		);
+		$result = $this->db->insert($arrays['table'], $insert_array);
+
+		return $result;
 	}
 }
 ?>

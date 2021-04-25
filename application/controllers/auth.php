@@ -28,8 +28,33 @@ class Auth extends CI_Controller
 		$this->load->view('footer_v');
 	}
 
+	// 회원가입
 	public function join(){
-		$this->load->view('auth/join_v');
+		$this->form_validation->set_rules('id', '아이디', 'required|callback_username_check|min_length[5]|max_length[12]');
+		$this->form_validation->set_rules('password', '비밀번호', 'required|min_length[6]|max_length[15]');
+		$this->form_validation->set_rules('passconf', '비밀번호 확인', 'required|matches[password]');
+		$this->form_validation->set_rules('name', '이름', 'required|min_length[2]|max_length[12]');
+		$this->form_validation->set_rules('email', '이메일', 'required|valid_email');
+
+			if ($this->form_validation->run() == TRUE) {
+			$data = array(
+				'table' => 'users',
+				'id' => $this->input->post('id', true),
+				'password' => $this->input->post('password', true),
+				'name' => $this->input->post('name', true),
+				'email' => $this->input->post('email', true),
+			);
+			print_r($data);
+			$result = $this->auth_m->insert_join($data);
+
+			if ($result) {
+				alert("회원가입 축하드립니다.", '/bbs/board/lists/board');
+			} else {
+				alert("다시 작성 부탁드립니다.", '/bbs/auth/join');
+			}
+		} else {
+			$this->load->view('auth/join_v');
+		}
 	}
 
 	// 로그인 처리
@@ -75,6 +100,27 @@ class Auth extends CI_Controller
 
 		alert('로그아웃 되었습니다.', '/bbs/board/lists/board');
 		exit;
+	}
+
+	// id를 받아오면 db에서 중복되었는지 확인
+	public function username_check($id) {
+		$this->load->database();
+		
+		if ($id) {
+			$result = array();
+			$sql = "SELECT * FROM users WHERE username = '".$id."'";
+			$query = $this->db->query($sql);
+			$result = @$query->row();
+			
+			if ($result) {
+				$this->form_validation->set_message('username_check', $id.'은(는) 중복된 아이디 입니다.');
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
 	}
 }
 ?>

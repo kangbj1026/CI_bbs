@@ -16,7 +16,6 @@ class Test extends CI_Controller {
 		if (method_exists($this, $method)) {
 			$this -> {"{$method}"}();
 		}
- 
 		$this -> load -> view('footer_v');
 	}
 	
