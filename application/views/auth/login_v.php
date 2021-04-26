@@ -10,15 +10,14 @@
 			<label class="control-label" for="input1">아이디</label>
 			<div class="controls">
 				<input type="text" class="input-xlarge" id="input1" name="username" value="<?=set_value('username')?>" />
-				<p class="help-block"></p>
+				<h6><?=form_error('username')?></h6>
 			</div>
 			<label class="control-label" for="input2">비밀번호</label>
 			<div class="controls">
 				<input type="password" class="input-xlarge" id="input2" name="password" value="<?=set_value('password')?>" />
-				<p class="help-block"></p>
+				<h6><?=form_error('password')?></h6>
 			</div>
 			<div class="controls">
-				<p class="help-block"><?=validation_errors()?></p>
 			</div>
 
 			<div class="form_actions">

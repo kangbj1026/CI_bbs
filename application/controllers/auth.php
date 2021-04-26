@@ -44,7 +44,7 @@ class Auth extends CI_Controller
 				'name' => $this->input->post('name', true),
 				'email' => $this->input->post('email', true),
 			);
-			print_r($data);
+			// print_r($data);
 			$result = $this->auth_m->insert_join($data);
 
 			if ($result) {
@@ -116,6 +116,7 @@ class Auth extends CI_Controller
 				$this->form_validation->set_message('username_check', $id.'은(는) 중복된 아이디 입니다.');
 				return false;
 			} else {
+				$this->form_validation->set_message('username_check', $id.'은(는) 적절한 아이디 입니다.');
 				return true;
 			}
 		} else {

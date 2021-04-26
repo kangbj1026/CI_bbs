@@ -48,9 +48,9 @@ class Board extends CI_Controller
 		// $uri_array[0] = board, $uri_array[1] = lists, $uri_array[2] = ci_board, $uri_array[3] = page
 
 		// 값이 배열에 존재하는지 확인
-		if (in_array('/q/', $uri_array)) {
+		if (in_array('q', $uri_array)) {
 			// 주소에 검색어가 있을 경우 처리 , 검색어를 반환
-			$search_word = urldecode($this->url_explode($uri_array, '/q/'));
+			$search_word = urldecode($this->url_explode($uri_array, 'q'));
 			// 페이지네이션 용 주소
 			$page_url = '/q/' . $search_word;
 			// alert($page_url);
@@ -80,11 +80,11 @@ class Board extends CI_Controller
 		if ($page < 0) {
 			$start = (($page / $config['per_page'])) * $config['per_page'];
 		} else {
-			$start = ((int)$page - 1) * $config['per_page'];
+			$start = ($page - 1) * $config['per_page'];
 		}
 		
 		// ( 페이지 - 1 ) * 게시물 수
-		$start = ((int)$page - 1) * $config['per_page'];
+		$start = ($page - 1) * $config['per_page'];
 
 		// 게시물 수 변수에 담기
 		$limit = $config['per_page'];
@@ -179,7 +179,7 @@ class Board extends CI_Controller
 				'user_id' => $this->session->userdata('username'),
 				'user_name' => $this->session->userdata('name')
 			);
-			print_r($this->session->userdata());
+			// print_r($this->session->userdata());
 
 			// 모델로 저장된 부분 보냄
 			$result = $this->board_m->insert_board($write_data);

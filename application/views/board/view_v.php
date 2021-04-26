@@ -37,7 +37,7 @@
 		<fieldset>
 		<label class="control-label" for="input01"> 댓글 추가 </label>
 			<div class="comments">
-					<textarea class="input-xlarge" id="input01" name="comment_contents" rows="3"></textarea>
+					<textarea class="input-xlarge" id="input01" name="comment_contents" ></textarea>
 					<input class="btn" type="button" onclick="document.getElementById('input01').value='';" value="취소" />
 					<input class="btn" type="button" onclick="comment_add()" value="작성" />
 			</div>

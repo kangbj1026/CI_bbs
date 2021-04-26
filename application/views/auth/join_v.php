@@ -32,7 +32,7 @@
 				<h6><?=form_error('email');?></h6>
 			</div>
 
-			<div class="form_actions">
+			<div>
 				<button type="submit" class="btn">확인</button>
 			</div>
 		</div>
