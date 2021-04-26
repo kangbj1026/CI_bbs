@@ -1,7 +1,7 @@
 <?php $attributes = array('class' => 'form-horizontal', 'id' => 'auth_join');
 ?>
 <article id="board_area">
-	<?=form_open('bbs/auth/join', $attributes)?>
+	<?=form_open('community/auth/join', $attributes)?>
 	<!-- <form class="form-horizontal" method="POST" id="auth_join" action=""> -->
 	<fieldset>
 		<legend> 회원가입 </legend>

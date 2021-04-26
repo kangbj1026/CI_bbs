@@ -2,7 +2,7 @@
 	<!-- <form class="form-horizontal" method="post" action="" id="write_action"> -->
 		<?php
 		$attributes = array('class' => 'form-horizontal', 'id' => 'write_action');
-		echo form_open('bbs/board/modify/board/board_id/'.$this->uri->segment(5).'/page', $attributes);
+		echo form_open('community/board/modify/board/board_id/'.$this->uri->segment(5).'/page', $attributes);
 		?>
 		<fieldset>
 			<legend>

@@ -5,13 +5,13 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title> BBS </title>
+	<title> community </title>
 	<!--[if lt IE 9]>
 	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<link rel="stylesheet" href="<?=base_url("bbs/include/css/style.css")?>">
-	<script type="text/javascript" src="<?=base_url("bbs/include/js/jquery-3.6.0.min.js")?>"></script>
-	<script type="text/javascript" src="/bbs/include/js/httpRequest.js"></script>
+	<link rel="stylesheet" href="<?=base_url("community/include/css/style.css")?>">
+	<script type="text/javascript" src="<?=base_url("community/include/js/jquery-3.6.0.min.js")?>"></script>
+	<script type="text/javascript" src="/community/include/js/httpRequest.js"></script>
 	<script>
 	// 검색어 입력시 조건
 		$(document).ready(function() {
@@ -22,7 +22,7 @@
 					return false;
 				} else {
 					// 뷰에서 전송한 주소
-					var act = "/bbs/board/lists/board/q/" + $("#q").val() + "/page/1";
+					var act = "/community/board/lists/board/q/" + $("#q").val() + "/page/1";
 					// $("#폼아이디").attr('속성', url)
 					$("#bd_search").attr('action', act).submit();
 				}
@@ -60,7 +60,7 @@
 	// 	// 데이터는 쿼리스트링 방식으로 생성, 게시글 입력을 위해 테이블 명, 원글 번호가 추가로 필요
 	// 	let name = "comment_contents=" + encodeURIComponent(document.com_add.comment_contents.value) + 
 	// 		"&csrf_test_name=" + csrf_token + "&table=<?=$this->uri->segment(3)?>&board_id=<?=$this->uri->segment(5)?>";
-	// 	sendRequest("/bbs/ajax_board/ajax_comment_add", name, add_action, "POST");
+	// 	sendRequest("/community/ajax_board/ajax_comment_add", name, add_action, "POST");
 	// }
 	
 	// function add_action() {
@@ -123,16 +123,16 @@
 		<header id="header">
 			<div class="top">
 				<ul>
-					<h1><a rel="external" href="/bbs/board/lists/board/"> board 게시판 </a></h1>
+					<h1><a rel="external" href="/community/board/lists/board/"> board 게시판 </a></h1>
 				</ul>
 			</div>
 			<div class="top_right">
-				<h2 class="a"> <a class="b" href="/bbs/auth/join"> JOIN </a> </h2>
+				<h2 class="a"> <a class="b" href="/community/auth/join"> JOIN </a> </h2>
 				<?php
 				if (@$this->session->userdata('logged_in') == TRUE) {
-					echo "<h3><p>" . $this->session->userdata('username') . " 님</p></h3> <h2><a href='/bbs/auth/logout'> LOG OUT </a></h2>";
+					echo "<h3><p>" . $this->session->userdata('username') . " 님</p></h3> <h2><a href='/community/auth/logout'> LOG OUT </a></h2>";
 				} else {
-					echo "<h2><a href='/bbs/auth/login'> LOGIN </a></h2>";
+					echo "<h2><a href='/community/auth/login'> LOGIN </a></h2>";
 				}
 				?>
 			</div>

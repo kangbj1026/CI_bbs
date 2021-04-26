@@ -1,4 +1,4 @@
-create database bbs;
+create database community;
 grant All PRIVILEGES ON *.* to 'up_rabbit'@'localhost' identified by 'good_luck';
 FLUSH PRIVILEGES;
 SHOW GRANT FOR 'up_rabbit'@'localhost';

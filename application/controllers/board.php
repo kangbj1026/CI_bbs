@@ -60,7 +60,7 @@ class Board extends CI_Controller
 		}
 
 		// 페이징 주소
-		$config['base_url'] = '/bbs/board/lists/board'.$page_url.'/page';
+		$config['base_url'] = '/community/board/lists/board'.$page_url.'/page';
 		// 게시물 전체 개수
 		$config['total_rows'] = $this->board_m->get_list($this->uri->segment(3), 'count', '', '', $search_word);
 		// 한 페이지에 표시할 게시물 수
@@ -167,7 +167,7 @@ class Board extends CI_Controller
 
 			// if (!$this->input->post('subject', TRUE) || !$this->input->post('contents', TRUE)) {
 			// 	글 내용이 없을 경우, 프로그램 단에서 한 번 더 체크
-			// 	alert('다시 입력해주세요.', '/bbs/board/write/' . $this->uri->segment(3) . '/page/' . $pages);
+			// 	alert('다시 입력해주세요.', '/community/board/write/' . $this->uri->segment(3) . '/page/' . $pages);
 			// 	exit;
 			// }
 
@@ -185,10 +185,10 @@ class Board extends CI_Controller
 			$result = $this->board_m->insert_board($write_data);
 
 			if ($result) {
-				alert("입력되었습니다.", '/bbs/board/lists/' . $this->uri->segment(3) . '/page/' . $pages);
+				alert("입력되었습니다.", '/community/board/lists/' . $this->uri->segment(3) . '/page/' . $pages);
 				exit;
 			} else {
-				alert("다시 입력해주세요.", '/bbs/board/write/' . $this->uri->segment(3) . '/page/' . $pages);
+				alert("다시 입력해주세요.", '/community/board/write/' . $this->uri->segment(3) . '/page/' . $pages);
 				exit;
 			}
 		} else {
@@ -225,10 +225,10 @@ class Board extends CI_Controller
 			$result = $this->board_m->modify_board($modify_data);
 
 			if ($result) {
-				alert('수정되었습니다.', '/bbs/board/view/' . $this->uri->segment(3) . '/' . $this->uri->segment(5));
+				alert('수정되었습니다.', '/community/board/view/' . $this->uri->segment(3) . '/' . $this->uri->segment(5));
 				exit;
 			} else {
-				alert('다시 수정해 주세요.', '/bbs/board/modify/' . $this->uri->segment(3) . '/board_id/' . $this->uri->segment(5) . '/page/' . $pages);
+				alert('다시 수정해 주세요.', '/community/board/modify/' . $this->uri->segment(3) . '/board_id/' . $this->uri->segment(5) . '/page/' . $pages);
 				exit;
 			}
 		} else {
@@ -245,10 +245,10 @@ class Board extends CI_Controller
 		$return = $this->board_m->delete_content($this->uri->segment(3), $this->uri->segment(5));
 		
 		if ( $return ) {
-			alert('삭제되었습니다.', '/bbs/board/lists/' . $this->uri->segment(3) . '/page/' . $this->uri->segment(7));
+			alert('삭제되었습니다.', '/community/board/lists/' . $this->uri->segment(3) . '/page/' . $this->uri->segment(7));
 			exit;
 		} else {
-			alert('삭제 실패하였습니다.', '/bbs/board/view/' . $this->uri->segment(3) . $this->uri->segment(5));
+			alert('삭제 실패하였습니다.', '/community/board/view/' . $this->uri->segment(3) . $this->uri->segment(5));
 			exit;
 		}
 	}

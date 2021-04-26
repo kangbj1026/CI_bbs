@@ -3,7 +3,7 @@
 	<header>
 		<h1></h1>
 	</header>
-	<?=form_open('bbs/auth/login', $attributes)?>
+	<?=form_open('community/auth/login', $attributes)?>
 	<fieldset>
 		<legend>로그인</legend>
 		<div class="control-group">

@@ -18,13 +18,13 @@
 		<tfoot>
 			<tr>
 				<th colspan="4">
-					<a href="/bbs/board/lists/<?=$this->uri->segment(3)?>/page/<?=$this->uri->segment(7)?>" class="btn btn-primary">목록 </a>
+					<a href="/community/board/lists/<?=$this->uri->segment(3)?>/page/<?=$this->uri->segment(7)?>" class="btn btn-primary">목록 </a>
 					<?php
 					if (@$this->session->userdata('logged_in')) {
 					?>
-						<a href="/bbs/board/modify/<?=$this->uri->segment(3)?>/board_id/<?=$this->uri->segment(4)?>/page" class="btn btn-warning"> 수정 </a>
-						<a href="/bbs/board/delete/<?=$this->uri->segment(3)?>/board_id/<?=$this->uri->segment(4)?>/page" class="btn btn-danger"> 삭제 </a>
-						<a href="/bbs/board/write/<?=$this->uri->segment(3)?>/page/<?=$this->uri->segment(7)?>" class="btn btn-success">쓰기</a>
+						<a href="/community/board/modify/<?=$this->uri->segment(3)?>/board_id/<?=$this->uri->segment(4)?>/page" class="btn btn-warning"> 수정 </a>
+						<a href="/community/board/delete/<?=$this->uri->segment(3)?>/board_id/<?=$this->uri->segment(4)?>/page" class="btn btn-danger"> 삭제 </a>
+						<a href="/community/board/write/<?=$this->uri->segment(3)?>/page/<?=$this->uri->segment(7)?>" class="btn btn-success">쓰기</a>
 					<?php
 					}
 					?>

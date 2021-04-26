@@ -1,4 +1,4 @@
-# CI_bbs
+# CI_community
 Codeigniter 를 이용한 MVC 게시판
 
 ###################

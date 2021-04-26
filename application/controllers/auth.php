@@ -48,9 +48,9 @@ class Auth extends CI_Controller
 			$result = $this->auth_m->insert_join($data);
 
 			if ($result) {
-				alert("회원가입 축하드립니다.", '/bbs/board/lists/board');
+				alert("회원가입 축하드립니다.", '/community/board/lists/board');
 			} else {
-				alert("다시 작성 부탁드립니다.", '/bbs/auth/join');
+				alert("다시 작성 부탁드립니다.", '/community/auth/join');
 			}
 		} else {
 			$this->load->view('auth/join_v');
@@ -80,10 +80,10 @@ class Auth extends CI_Controller
 				);
 				$this->session->set_userdata($newdata);
 
-				alert('로그인 되었습니다.', '/bbs/board/lists/board/page/1');
+				alert('로그인 되었습니다.', '/community/board/lists/board/page/1');
 				exit;
 			} else {
-				alert('아이디나 비밀번호를 확인해 주세요. ', '/bbs/auth/login');
+				alert('아이디나 비밀번호를 확인해 주세요. ', '/community/auth/login');
 				exit;
 			}
 		} else {
@@ -98,7 +98,7 @@ class Auth extends CI_Controller
 		// delete from sessions where session_id;
 		$this->session->unset_userdata('username');
 
-		alert('로그아웃 되었습니다.', '/bbs/board/lists/board');
+		alert('로그아웃 되었습니다.', '/community/board/lists/board');
 		exit;
 	}
 

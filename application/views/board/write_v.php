@@ -2,7 +2,7 @@
 <article id="board_area">
 	<!-- <form class="form-horizontal" method="post" action="" id="write_action"> -->
 	<?php
-	echo form_open('bbs/board/write/board', $attributes);
+	echo form_open('community/board/write/board', $attributes);
 	?>
 	<fieldset>
 		<legend>
