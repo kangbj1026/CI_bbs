@@ -106,15 +106,6 @@
 	// 		break;
 	// 	}
 	// }
-
-	function comment_add(){
-		$(document).ready(function(){
-			$("#comment_btn").click(function(){
-				console.log($("#input01").val());
-				$("#comment_action").submit();
-			})
-		})
-	}
 	</script>
 </head>
 

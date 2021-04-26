@@ -142,9 +142,16 @@ class Board extends CI_Controller
 
 		// 게시판 이름과 세미루 번호에 해당하는 댓글 리스트 가져오기
 		$data['comment_lists'] = $this->board_m->get_comment($table, $board_id);
-	
-		// view 호출
-		$this->load->view('board/view_v', $data);
+
+		if($_POST) {
+			$comment_data = array(
+				'table' => 'comments',
+				'comment' => $this->input->post('comment_contents', TRUE)
+			);
+			$result = $this->board_m->insert_comment($comment_data);
+		}
+			// view 호출
+			$this->load->view('board/view_v', $data);
 	}
 
 	// 게시물 쓰기
