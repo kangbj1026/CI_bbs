@@ -141,7 +141,7 @@ class Board extends CI_Controller
 		$data['views'] = $this->board_m->get_view($this->uri->segment(3), $this->uri->segment(4));
 
 		// 게시판 이름과 세미루 번호에 해당하는 댓글 리스트 가져오기
-		$data['comment_list'] = $this->board_m->get_comment($table, $board_id);
+		$data['comment_lists'] = $this->board_m->get_comment($table, $board_id);
 	
 		// view 호출
 		$this->load->view('board/view_v', $data);
