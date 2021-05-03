@@ -3,6 +3,7 @@ class Auth_m extends CI_Model
 {
 	function __construct()
 	{
+		$this->load->library('session');
 		parent::__construct();
 		$sql = "ALTER TABLE users AUTO_INCREMENT=1";
 		$query = $this->db->query($sql);
@@ -13,11 +14,10 @@ class Auth_m extends CI_Model
 	}
 	// 게시물 작성자 아이디 반환
 	// @return string 작성자 아이디
-	function writer_check() {
-		$table = $this->uri->segment(3);
-		$board_id = $this->uri->segment(5);
+	function user_check() {
+		$username = $this->session->userdata('username');
 		
-		$sql = "SELECT user_id FROM $table WHERE board_id = '$board_id'";
+		$sql = "SELECT username FROM users WHERE username = '$username'";
 		$query = $this->db->query($sql);
 		
 		return $query->row();
@@ -61,9 +61,17 @@ class Auth_m extends CI_Model
 			'email' => $modeif['email'],
 		);
 		$result = $this->db->update('users',$fields);
+		return $result;
+	}
+
+	// 회원탈퇴
+	function leave(){
+		$delete_array = array(
+			'username' => $this->session->userdata('username')
+		);
+		$result = $this->db->delete('users', $delete_array);
 
 		return $result;
-
 	}
 }
 ?>

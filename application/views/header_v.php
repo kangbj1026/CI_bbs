@@ -52,6 +52,18 @@
 // 			}
 // 		});
 // 	});
+
+	$(document).ready(function(){
+		$("#user_leave").click(function(){
+			if (confirm("정말 회원 탈퇴를 하시겠습니까?")) {
+			// 확인 버튼 클릭 시 동작
+			alert("시작합니다.", location.href='user_leave');
+		} else {
+			// 취소 버튼 클릭 시 동작
+			alert("취소했습니다.");
+		}
+		});
+	});
 	</script>
 </head>
 
@@ -67,8 +79,8 @@
 				<?php
 				if (@$this->session->userdata('logged_in') == TRUE) {
 					echo "
-					<h2 class='a'> <a href='/community/auth/modify'> Modify </a> </h2>
-					<h3><p><a href='/community/auth/modify'>" . $this->session->userdata('username') . "</a> 님</p></h3> <h2><a href='/community/auth/logout'> LOG OUT </a></h2>
+					<h2 class='a'> <a href='/community/auth/user_modify'> Modify </a> </h2>
+					<h3><p><a href='/community/auth/user_modify'>" . $this->session->userdata('username') . "</a> 님</p></h3> <h2><a href='/community/auth/logout'> LOG OUT </a></h2>
 					";
 				} else {
 					echo "

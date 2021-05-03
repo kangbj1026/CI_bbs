@@ -41,7 +41,7 @@ if(@$this->session->userdata('logged_in') == false) {
 	</fieldset>
 	</form>
 	<?php } else { ?>
-		<?=form_open('community/auth/modify', $attributes)?>
+		<?=form_open('community/auth/user_modify', $attributes)?>
 	<fieldset>
 		<legend> 회원수정 </legend>
 		<div class="control-group">
@@ -73,6 +73,8 @@ if(@$this->session->userdata('logged_in') == false) {
 			<div>
 				<button type="submit" class="btn"> 수정 완료 </button>
 				<input class="btn" type="button" onclick="window.history.back()" value="취소">
+				<input id="user_leave" class="btn user_leave" type="button" value="회원탈퇴">
+				<!-- onclick="location.href='user_leave'" -->
 			</div>
 		</div>
 	</fieldset>

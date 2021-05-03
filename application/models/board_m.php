@@ -133,6 +133,7 @@ class Board_m extends CI_Model
 
 		return $query;
 	}
+	
 	// 댓글 입력
 	// @param array $arrays 테이블 명, 게시물 제목, 게시물 내용, 아이디 
 	// @return boolean 성공 여부

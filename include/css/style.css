@@ -97,6 +97,10 @@ div .pre{
 .btn-modify {
 	margin: 15px 15px 0px 60px;
 }
+.user_leave{
+	float: right;
+	background: #fed666;
+}
 
 .form-horizontal {
 	width: 80%;

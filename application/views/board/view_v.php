@@ -45,17 +45,6 @@
 		</fieldset>
 	</form>
 
-	<!-- <form class="form-comments" method="POST" action="" name="com_add">
-		<fieldset>
-		<label class="control-label" for="input01"> 댓글 추가 </label>
-			<div class="comments">
-					<textarea class="input-xlarge" id="input01" name="comment_contents" ></textarea>
-					<input class="btn" type="button" onclick="document.getElementById('input01').value='';" value="취소" />
-					<input class="btn" type="button" onclick="comment_add()" value="작성" />
-			</div>
-		</fieldset>
-	</form> -->
-	
 	<!-- <div id="comment_area">
 		<table cellspacing="0" cellpadding="0" class="table">
 			<tbody>

@@ -119,7 +119,7 @@ class Auth extends CI_Controller
 		}
 	}
 
-	function modify(){
+	function user_modify(){
 		$this->form_validation->set_rules('password', '비밀번호', 'required|min_length[6]|max_length[15]');
 		$this->form_validation->set_rules('passconf', '비밀번호 확인', 'required|matches[password]');
 		$this->form_validation->set_rules('name', '이름', 'required|min_length[2]|max_length[12]');
@@ -133,18 +133,23 @@ class Auth extends CI_Controller
 					'name' => $this->input->post('name', true),
 					'email' => $this->input->post('email', true),
 			);
-			// print_r($fields);die;
 			$result = $this->auth_m->modify($fields);	
 	
 			if ($result) {
 				$this->session->sess_destroy();
-				alert("수정완료 되었습니다.", '/community/board/lists/board');
+				alert("수정완료 되었습니다. 다시 로그인 시도 해주세요.", '/community/auth/login');
 			} else {
-				alert("다시 작성 부탁드립니다.", '/community/auth/modify');
+				alert("다시 작성 부탁드립니다.", '/community/auth/user_modify');
 			}
 		} else {
 			$this->load->view('auth/join_v');
 		}
+	}
+	
+	function user_leave(){
+		$this->auth_m->leave();
+		$this->session->sess_destroy();
+		alert("회원 탈퇴 되셨습니다! 수고하셨습니다!", '/community/auth/login');
 	}
 }
 ?>
