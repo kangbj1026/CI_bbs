@@ -79,5 +79,5 @@ if(@$this->session->userdata('logged_in') == false) {
 		</div>
 	</fieldset>
 	</form>
-	<?php  } ?>
+	<?php } ?>
 </article>

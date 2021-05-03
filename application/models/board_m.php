@@ -6,11 +6,15 @@ class Board_m extends CI_Model
 	{
 		parent::__construct();
 		$sql = "ALTER TABLE board AUTO_INCREMENT=1";
+		$sql01 = "ALTER TABLE comments AUTO_INCREMENT=1";
 		$query = $this->db->query($sql);
+		$query = $this->db->query($sql01);
 		$sql1 = "SET @COUNT = 0";
-		$query = $this->db->query($sql1);	 
+		$query = $this->db->query($sql1);
 		$sql2 = "UPDATE board SET board_id = @COUNT:=@COUNT+1";
+		$sql02 = "UPDATE comments SET indexcomments = @COUNT:=@COUNT+1";
 		$query = $this->db->query($sql2);
+		$query = $this->db->query($sql02);
 	}
 
 	// 게시물 작성자 아이디 반환
@@ -123,7 +127,6 @@ class Board_m extends CI_Model
 
 	function insert_comment($comments) {
 		$comment_data = array(
-			'comments' => $comments['table'],
 			'comment' => $comments['comment']
 		);
 		$sql = "INSERT INTO comments (comments) VALUE ('".$comment_data['comment']."')";

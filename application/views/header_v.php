@@ -55,13 +55,17 @@
 
 	$(document).ready(function(){
 		$("#user_leave").click(function(){
-			if (confirm("정말 회원 탈퇴를 하시겠습니까?")) {
-			// 확인 버튼 클릭 시 동작
-			alert("시작합니다.", location.href='user_leave');
-		} else {
+			if (confirm("회원 탈퇴를 하시겠습니까?")) {
+				if (confirm("정말로 진짜로!! 하실껀가요? ㅠ ㅠ")) {
+					// 확인 버튼 클릭 시 동작
+					alert(" 안녕히 가세요 ㅠㅠ 탈퇴 진행을 시작합니다.", location.href='user_leave');		
+				} else {
+					alert("고맙습니다 ㅠㅠ 잘 생각하셨습니다.");
+				}
+			} else {
 			// 취소 버튼 클릭 시 동작
 			alert("취소했습니다.");
-		}
+			}
 		});
 	});
 	</script>

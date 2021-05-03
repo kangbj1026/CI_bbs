@@ -10,6 +10,7 @@ class Board extends CI_Controller
 		$this->load->model('board_m'); // 모델은 일반적으로 컨트롤러(controller) 내에서 로드되어 호출
 		$this->load->library('pagination');	// 페이지 네이션 설정
 		$this->load->library('form_validation'); // system/language/english/form_validation_lang.php
+		$this->load->library('session');
 		$this->load->helper(array('url', 'date')); // 핼퍼에 정의되어 있는 함수를 사용
 		$this->load->helper('alert'); // 경고창
 		$this->load->helper('form');
@@ -143,13 +144,13 @@ class Board extends CI_Controller
 		// 게시판 이름과 세미루 번호에 해당하는 댓글 리스트 가져오기
 		$data['comment_lists'] = $this->board_m->get_comment($table, $board_id);
 
-		
+		if (@$this->session->userdata('logged_in') == true && $_POST) {
 			$comment_data = array(
 				'table' => 'comments',
 				'comment' => $this->input->post('comment_contents', TRUE)
 			);
 			$result = $this->board_m->insert_comment($comment_data);
-		
+		}
 			// view 호출
 			$this->load->view('board/view_v', $data);
 	}

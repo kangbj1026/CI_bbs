@@ -26,11 +26,11 @@ div .pre{
 	float: left;
 }
 #header .top_right {
-	width: 15%;
+	padding: 0px 2% 0px 0px;
+	width: 18%;
 	float: right;
 }
 #header .top_right .a {
-	padding: 0 20px 0 0;
 	float: inherit;
 }
 
