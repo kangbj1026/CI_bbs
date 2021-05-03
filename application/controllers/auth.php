@@ -92,7 +92,7 @@ class Auth extends CI_Controller
 	}
 
 	public function logout()
-	{	
+	{
 		// sessions table delete column data - username, email, logged_in ;
 		$this->session->sess_destroy();
 		// delete from sessions where session_id;
@@ -103,9 +103,7 @@ class Auth extends CI_Controller
 	}
 
 	// id를 받아오면 db에서 중복되었는지 확인
-	public function username_check($id) {
-		$this->load->database();
-		
+	public function username_check($id) {		
 		if ($id) {
 			$result = array();
 			$sql = "SELECT * FROM users WHERE username = '".$id."'";
@@ -116,11 +114,36 @@ class Auth extends CI_Controller
 				$this->form_validation->set_message('username_check', $id.'은(는) 중복된 아이디 입니다.');
 				return false;
 			} else {
-				$this->form_validation->set_message('username_check', $id.'은(는) 적절한 아이디 입니다.');
 				return true;
 			}
+		}
+	}
+
+	function modify(){
+		$this->form_validation->set_rules('password', '비밀번호', 'required|min_length[6]|max_length[15]');
+		$this->form_validation->set_rules('passconf', '비밀번호 확인', 'required|matches[password]');
+		$this->form_validation->set_rules('name', '이름', 'required|min_length[2]|max_length[12]');
+		$this->form_validation->set_rules('email', '이메일', 'required|valid_email');
+
+			if ($this->form_validation->run() == TRUE) {
+			$fields = array(
+					'table' => 'users',
+					'username' => $this->session->userdata('username'),
+					'password' => $this->input->post('password', true),
+					'name' => $this->input->post('name', true),
+					'email' => $this->input->post('email', true),
+			);
+			// print_r($fields);die;
+			$result = $this->auth_m->modify($fields);	
+	
+			if ($result) {
+				$this->session->sess_destroy();
+				alert("수정완료 되었습니다.", '/community/board/lists/board');
+			} else {
+				alert("다시 작성 부탁드립니다.", '/community/auth/modify');
+			}
 		} else {
-			return false;
+			$this->load->view('auth/join_v');
 		}
 	}
 }

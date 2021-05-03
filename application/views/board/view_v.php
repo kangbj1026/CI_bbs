@@ -39,7 +39,7 @@
 			<div class="comments">
 					<textarea class="input-xlarge" id="input01" name="comment_contents" ></textarea>
 					<input class="btn" type="button" onclick="document.getElementById('input01').value='';" value="취소" />
-					<button class="btn" type="submit" id="comment_btn" onclick="comment_add()"> 작성 </button>
+					<button class="btn" type="submit" id="comment_btn"> 작성 </button>
 					<!-- <input class="btn" type="button" id="comment_btn" onclick="comment_add()" value="작성" /> -->
 			</div>
 		</fieldset>

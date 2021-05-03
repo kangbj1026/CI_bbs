@@ -13,7 +13,7 @@ class PreAuthAccessCheck {
 			alert('로그인후 사용 가능합니다.', '/community/board/lists/board/');
 		} // 로그인 상태(o) 
 		else if (@$this->CI->session->userdata('logged_in') == true
-		&& in_array($this->CI->uri->segment(2), ['modify', 'delete'])) {
+		&& in_array($this->CI->uri->segment(3), ['modify', 'delete'])) {
 			$write_id = $this->CI->board_m->writer_check();
 			// username 일치 하지 않을 경우
 			if ($write_id->user_id != $this->CI->session->userdata('username')) {

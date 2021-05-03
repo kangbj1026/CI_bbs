@@ -23,7 +23,6 @@ class Board_m extends CI_Model
 		$query = $this->db->query($sql);
 		
 		return $query->row();
-		
 	}
 
 	// 게시판 목록

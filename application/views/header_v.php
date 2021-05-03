@@ -52,60 +52,6 @@
 // 			}
 // 		});
 // 	});
-
-	// // 데이터를 XMLHttpRequest 객체를 이용해 어떤 주소에 전달하고 가공된 데이터를 받아 특정 함수를 실행
-	// function comment_add() {
-	// 	let csrf_token = getCookie('csrf_cookie_name');
-	// 	// XMLHttpRequest 객체에 전달할 데이터를 생성
-	// 	// 데이터는 쿼리스트링 방식으로 생성, 게시글 입력을 위해 테이블 명, 원글 번호가 추가로 필요
-	// 	let name = "comment_contents=" + encodeURIComponent(document.com_add.comment_contents.value) + 
-	// 		"&csrf_test_name=" + csrf_token + "&table=<?=$this->uri->segment(3)?>&board_id=<?=$this->uri->segment(5)?>";
-	// 	sendRequest("/community/ajax_board/ajax_comment_add", name, add_action, "POST");
-	// }
-	
-	// function add_action() {
-	// 	if ( httpRequest.readyState == 4) {
-	// 		if ( httpRequest.status == 200) {
-	// 			if ( httpRequest.responseText == 1000) {
-	// 				alert("댓글의 내용을 입력하세요.");
-	// 			} else if ( httpRequest.responseText == 2000) {
-	// 				alert("다시 입력하세요.");
-	// 			} else if ( httpRequest.responseText == 9000) {
-	// 				alert("로그인하여야 합니다.");
-	// 			} else {
-	// 				let contents = document.getElementById("comment_area");
-	// 				contents.innerHTML = httpRequest.responseText;
-					
-	// 				let textareas = document.getElementById("input01");
-	// 				textareas.value = '';
-	// 			}
-	// 		} else {
-	// 			document.location.reload();
-	// 		}
-	// 	}
-	// }
-	
-	// function getCookie(name) {
-	// 	let nameOfCookie = name + "=";
-	// 	let x = 0;
-		
-	// 	while ( x <= document.cookie.length) {
-	// 		let y = (x + nameOfCookie.length);
-			
-	// 		if (document.cookie.substring(x, y) == nameOfCookie) {
-	// 			if (( endOfCookie = document.cookie.indexOf(";", y)) == -1) 
-	// 				endOfCookie = document.cookie.length;
-				
-	// 			return unescape(document.cookie.substring(y, endOfCookie));
-	// 		}
-			
-	// 		x = document.cookie.indexOf(" ", x) + 1;
-			
-	// 		if ( x == 0) 
-			
-	// 		break;
-	// 	}
-	// }
 	</script>
 </head>
 
@@ -118,12 +64,17 @@
 				</ul>
 			</div>
 			<div class="top_right">
-				<h2 class="a"> <a class="b" href="/community/auth/join"> JOIN </a> </h2>
 				<?php
 				if (@$this->session->userdata('logged_in') == TRUE) {
-					echo "<h3><p>" . $this->session->userdata('username') . " 님</p></h3> <h2><a href='/community/auth/logout'> LOG OUT </a></h2>";
+					echo "
+					<h2 class='a'> <a href='/community/auth/modify'> Modify </a> </h2>
+					<h3><p><a href='/community/auth/modify'>" . $this->session->userdata('username') . "</a> 님</p></h3> <h2><a href='/community/auth/logout'> LOG OUT </a></h2>
+					";
 				} else {
-					echo "<h2><a href='/community/auth/login'> LOGIN </a></h2>";
+					echo "
+					<h2 class='a'> <a href='/community/auth/join'> JOIN </a> </h2>
+					<h2><a href='/community/auth/login'> LOGIN </a></h2>
+					";
 				}
 				?>
 			</div>

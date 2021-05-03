@@ -11,7 +11,17 @@ class Auth_m extends CI_Model
 		$sql2 = "UPDATE users SET id = @COUNT:=@COUNT+1";
 		$query = $this->db->query($sql2);
 	}
-
+	// 게시물 작성자 아이디 반환
+	// @return string 작성자 아이디
+	function writer_check() {
+		$table = $this->uri->segment(3);
+		$board_id = $this->uri->segment(5);
+		
+		$sql = "SELECT user_id FROM $table WHERE board_id = '$board_id'";
+		$query = $this->db->query($sql);
+		
+		return $query->row();
+	}
 	// 아이디 비밀번호 체크
 	// @param array $auth 폼 전송받은 아이디, 비밀번호	
 	// @return array
@@ -39,6 +49,21 @@ class Auth_m extends CI_Model
 		$result = $this->db->insert($arrays['table'], $insert_array);
 
 		return $result;
+	}
+	
+	// 회원수정
+	function modify($modeif){
+		extract($modeif);
+		$this->db->where('username', $modeif['username']);
+		$fields = array(
+			'password' => $modeif['password'],
+			'name' => $modeif['name'],
+			'email' => $modeif['email'],
+		);
+		$result = $this->db->update('users',$fields);
+
+		return $result;
+
 	}
 }
 ?>
