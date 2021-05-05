@@ -3,17 +3,11 @@ class Auth_m extends CI_Model
 {
 	function __construct()
 	{
-		$this->load->library('session');
 		parent::__construct();
-		$sql = "ALTER TABLE users AUTO_INCREMENT=1";
-		$query = $this->db->query($sql);
-		$sql1 = "SET @COUNT = 0";
-		$query = $this->db->query($sql1);	 
-		$sql2 = "UPDATE users SET id = @COUNT:=@COUNT+1";
-		$query = $this->db->query($sql2);
 	}
+
 	// 게시물 작성자 아이디 반환
-	// @return string 작성자 아이디
+	// return string 작성자 아이디
 	function user_check() {
 		$username = $this->session->userdata('username');
 		
@@ -22,45 +16,44 @@ class Auth_m extends CI_Model
 		
 		return $query->row();
 	}
+
 	// 아이디 비밀번호 체크
-	// @param array $auth 폼 전송받은 아이디, 비밀번호	
-	// @return array
-	function login($auth)
-	{
+	// param array $auth 폼 전송받은 아이디, 비밀번호	
+	// return array
+	function login($auth) {
+		extract($auth);
 		// 아이디와 비밀번호를 전송하여 데이터베이스의 데이터와 일치하면 세션을 생성
-		$sql = "SELECT username, email, name FROM users WHERE username = '" . $auth['username'] . "' AND password = '" . $auth['password'] . "' ";
+		$sql = "SELECT username, email, name FROM users WHERE username = '$username' AND password = '$password' ";
 		$query = $this->db->query($sql);
-		if ($query->num_rows() > 0) {
-			return $query->row();
-		} else {
-			return FALSE;
-		}
+
+		return $query->row();
 	}
 
 	// 회원가입
 	function insert_join($arrays){
+		extract($arrays);
 		$insert_array = array(
-			'username' => $arrays['id'],
-			'password' => $arrays['password'],
-			'name' => $arrays['name'],
-			'email' => $arrays['email'],
+			'username' => $id,
+			'password' => $password,
+			'name' => $name,
+			'email' => $email,
 			'reg_date' => date("Y-m-d H:i:s")
 		);
-		$result = $this->db->insert($arrays['table'], $insert_array);
-
+		$result = $this->db->insert($table, $insert_array);
 		return $result;
 	}
 	
 	// 회원수정
 	function modify($modeif){
+		// extract 배열에서 현재 기호 테이블로 변수 가져오기
 		extract($modeif);
-		$this->db->where('username', $modeif['username']);
+		$this->db->where('username', $username);
 		$fields = array(
-			'password' => $modeif['password'],
-			'name' => $modeif['name'],
-			'email' => $modeif['email'],
+			'password' => $password,
+			'name' => $name,
+			'email' => $email,
 		);
-		$result = $this->db->update('users',$fields);
+		$result = $this->db->update($table, $fields);
 		return $result;
 	}
 
@@ -70,7 +63,6 @@ class Auth_m extends CI_Model
 			'username' => $this->session->userdata('username')
 		);
 		$result = $this->db->delete('users', $delete_array);
-
 		return $result;
 	}
 }

@@ -119,6 +119,7 @@ class Auth extends CI_Controller
 		}
 	}
 
+	// 회원수정
 	function user_modify(){
 		$this->form_validation->set_rules('password', '비밀번호', 'required|min_length[6]|max_length[15]');
 		$this->form_validation->set_rules('passconf', '비밀번호 확인', 'required|matches[password]');
@@ -133,7 +134,7 @@ class Auth extends CI_Controller
 					'name' => $this->input->post('name', true),
 					'email' => $this->input->post('email', true),
 			);
-			$result = $this->auth_m->modify($fields);	
+			$result = $this->auth_m->modify($fields);
 	
 			if ($result) {
 				$this->session->sess_destroy();

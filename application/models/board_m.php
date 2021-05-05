@@ -5,20 +5,30 @@ class Board_m extends CI_Model
 	function __construct() 
 	{
 		parent::__construct();
-		$sql = "ALTER TABLE board AUTO_INCREMENT=1";
-		$sql01 = "ALTER TABLE comments AUTO_INCREMENT=1";
-		$query = $this->db->query($sql);
-		$query = $this->db->query($sql01);
-		$sql1 = "SET @COUNT = 0";
+		$sql1 = "ALTER TABLE board AUTO_INCREMENT=1";
 		$query = $this->db->query($sql1);
-		$sql2 = "UPDATE board SET board_id = @COUNT:=@COUNT+1";
-		$sql02 = "UPDATE comments SET indexcomments = @COUNT:=@COUNT+1";
+		$sql0 = "SET @COUNT = 0";
+		$query = $this->db->query($sql0);
+		$sql01 = "UPDATE board SET board_id = @COUNT:=@COUNT+1";
+		$query = $this->db->query($sql01);
+
+		$sql2 = "ALTER TABLE comments AUTO_INCREMENT=1";
 		$query = $this->db->query($sql2);
+		$sql0 = "SET @COUNT = 0";
+		$query = $this->db->query($sql0);
+		$sql02 = "UPDATE comments SET indexcomments = @COUNT:=@COUNT+1";
 		$query = $this->db->query($sql02);
+
+		$sql3 = "ALTER TABLE users AUTO_INCREMENT=1";
+		$query = $this->db->query($sql3);
+		$sql0 = "SET @COUNT = 0";
+		$query = $this->db->query($sql0);
+		$sql03 = "UPDATE users SET id = @COUNT:=@COUNT+1";
+		$query = $this->db->query($sql03);
 	}
 
 	// 게시물 작성자 아이디 반환
-	// @return string 작성자 아이디
+	// return string 작성자 아이디
 	function writer_check() {
 		$table = $this->uri->segment(3);
 		$board_id = $this->uri->segment(5);
@@ -59,9 +69,9 @@ class Board_m extends CI_Model
 	}
 
 	// 게시물 상세보기 가져오기
-	// @param string $table 게시판 테이블
-	// @param string $id 게시물 번호
-	// @return array
+	// param string $table 게시판 테이블
+	// param string $id 게시물 번호
+	// return array
 	function get_view($table, $id) {
 		// 조횟수 증가
 		$sql0 = "UPDATE $table SET hits = hits + 1 WHERE board_id='$id'";
@@ -77,45 +87,47 @@ class Board_m extends CI_Model
 	}
 
 	// 게시물 입력
-	// @param array $arrays 테이블 명, 게시물 제목, 게시물 내용 1차 배열
-	// @return boolean 입력 성공여부
+	// param array $arrays 테이블 명, 게시물 제목, 게시물 내용 1차 배열
+	// return boolean 입력 성공여부
 	function insert_board($arrays) {
+		extract($arrays);
 		$insert_array = array(
 			'board_pid' => 0,
-			'user_id' => $arrays['user_id'],
-			'user_name' => $arrays['user_name'],
-			'subject' => $arrays['subject'],
-			'contents' => $arrays['contents'],
+			'user_id' => $user_id,
+			'user_name' => $user_name,
+			'subject' => $subject,
+			'contents' => $contents,
 			'reg_date' => date("Y-m-d H:i:s")
 		);
 		
-		$result = $this->db->insert($arrays['table'], $insert_array);
+		$result = $this->db->insert($table, $insert_array);
 		
 		return $result;
 	}
 
 	// 게시물 수정
-	// @param array $arrays 테이블 명, 게시물 번호, 게시물 제목, 게시물 내용
-	// @return boolean 성공 여부
+	// param array $arrays 테이블 명, 게시물 번호, 게시물 제목, 게시물 내용
+	// return boolean 성공 여부
 	function modify_board($arrays) {
+		extract($arrays);
 		$modify_array = array(
-			'subject' => $arrays['subject'],
-			'contents' => $arrays['contents']
+			'subject' => $subject,
+			'contents' => $contents
 		);
 		
 		$where = array(
-			'board_id' => $arrays['board_id']
+			'board_id' => $board_id
 		);
 		
-		$result = $this->db->update($arrays['table'], $modify_array, $where);
+		$result = $this->db->update($table, $modify_array, $where);
 		
 		return $result;
 	}
 
 	// 게시물 삭제
-	// @param string $table 테이블 명
-	// @param string $no 게시물 번호
-	// @return boolean 성공 여부
+	// param string $table 테이블 명
+	// param string $no 게시물 번호
+	// return boolean 성공 여부
 	function delete_content($table, $no) {
 		$delete_array = array(
 			'board_id' => $no
@@ -125,42 +137,21 @@ class Board_m extends CI_Model
 		return $result;
 	}
 
+	// 댓글 입력
 	function insert_comment($comments) {
+		extract($comments);
 		$comment_data = array(
-			'comment' => $comments['comment']
+			'comments' => $comment
 		);
-		$sql = "INSERT INTO comments (comments) VALUE ('".$comment_data['comment']."')";
-		$query = $this->db->query($sql);
- 
-		// $result = $this->db->insert($comment_data['comments'], $comment_data['comment']);
+		$result = $this->db->insert($table, $comment_data);
 
-		return $query;
+		return $result;
 	}
 	
-	// 댓글 입력
-	// @param array $arrays 테이블 명, 게시물 제목, 게시물 내용, 아이디 
-	// @return boolean 성공 여부
-	// function insert_comment($arrays) {
-	//     $insert_array = array( 
-	//         'board_pid' => $arrays['board_pid'],
-	//         'user_id' => $arrays['user_id'],
-	//         'user_name' => $this->session->userdata('name'),
-	//         'subject' => $arrays['subject'],
-	//         'contents' => $arrays['contents'],
-	//         'reg_date' => date('Y-m-d H:i:s')
-	//     );
-		
-	//     $this->db->insert($arrays['table'], $insert_array);
-		
-	//     $board_id = $this->db->insert_id();
-		
-	//     return $board_id;
-	// }
-	
 	// 댓글 리스트 가져오기
-	// @param string $table 테이블 
-	// @param string $id 게시물 번호
-	// @return array
+	// param string $table 테이블 
+	// param string $id 게시물 번호
+	// return array
 	function get_comment($table, $id) {
 		$sql = "SELECT * FROM $table WHERE board_pid = '$id' ORDER BY board_id DESC";
 		$query = $this->db->query($sql);
