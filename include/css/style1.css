@@ -1,0 +1,16 @@
+* {
+	margin: 0;
+	padding: 10px;
+}
+#main {
+	display: table;
+	margin: auto;	
+}
+table {
+	margin: auto;
+	width: 100%;
+	border: 1px solid red;
+}
+table th {
+	width: 10%;
+}

@@ -1,8 +1,7 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteBase /
-	RewriteCond $1 !^(index\.php|images|captcha|data|application|include|uploads|robots\.txt)
+	#RewriteBase /
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^(.*)$ /community/index.php/$1 [L]
+	RewriteRule (.*) /community/index.php/$1
 </IfModule>

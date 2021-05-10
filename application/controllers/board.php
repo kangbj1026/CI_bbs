@@ -36,8 +36,7 @@ class Board extends CI_Controller
 	}
    
 	// board 목록
-	public function lists() 
-	{
+	public function lists() {
 		// $this->output->enable_profiler(TRUE);
 		// 검색어 초기화
 		$search_word = $page_url = '';
@@ -187,7 +186,6 @@ class Board extends CI_Controller
 				'user_id' => $this->session->userdata('username'),
 				'user_name' => $this->session->userdata('name')
 			);
-			// print_r($this->session->userdata());
 
 			// 모델로 저장된 부분 보냄
 			$result = $this->board_m->insert_board($write_data);
