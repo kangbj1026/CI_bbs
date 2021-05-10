@@ -21,7 +21,7 @@
 
 		<table>
 			<thead>
-				<tr>
+				<tr> 
 					<th> no </th>
 					<th> subject </th>
 					<th> contents </th>
